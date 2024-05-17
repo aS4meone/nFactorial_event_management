@@ -16,7 +16,7 @@ function EventDetails() {
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/events/${id}`);
+                const response = await axios.get(`http://127.0.0.1:8080/events/${id}`);
                 setEvent(response.data);
             } catch (error) {
                 console.error('Error fetching event details:', error);
@@ -29,7 +29,7 @@ function EventDetails() {
     useEffect(() => {
         const fetchCalendarLink = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/events/${id}/calendar_link`);
+                const response = await axios.get(`http://127.0.0.1:8080/events/${id}/calendar_link`);
                 setCalendarLink(response.data.calendar_link);
             } catch (error) {
                 console.error('Error fetching calendar link:', error);
@@ -44,7 +44,7 @@ function EventDetails() {
             setShowModal(true);
         } else {
             try {
-                const response = await axios.post(`http://127.0.0.1:8000/events/register/${id}/`, {}, {
+                const response = await axios.post(`http://127.0.0.1:8080/events/register/${id}/`, {}, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                         'Accept': 'application/json'

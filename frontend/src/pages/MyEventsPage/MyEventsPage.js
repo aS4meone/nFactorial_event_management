@@ -13,7 +13,7 @@ function MyEventsPage() {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/auth/me', {
+      const response = await axios.get('http://127.0.0.1:8080/auth/me', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -26,7 +26,7 @@ function MyEventsPage() {
 
   const fetchUserEvents = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/events/my_events/', {
+      const response = await axios.get('http://127.0.0.1:8080/events/my_events/', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

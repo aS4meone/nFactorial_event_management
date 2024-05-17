@@ -19,7 +19,7 @@ function Main() {
 
     const fetchEvents = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/events/');
+            const response = await axios.get('http://127.0.0.1:8080/events/');
             setEvents(response.data);
         } catch (error) {
             console.error('Ошибка при загрузке мероприятий:', error);
@@ -28,7 +28,7 @@ function Main() {
 
     const fetchRegisteredEventsCount = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/events/my_events/count', {
+            const response = await axios.get('http://127.0.0.1:8080/events/my_events/count', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }

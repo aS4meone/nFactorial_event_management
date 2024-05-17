@@ -9,12 +9,12 @@ function RegisterModal({ setShowRegisterModal, setShowLoginModal }) {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/register/', {
+      const response = await axios.post('http://127.0.0.1:8080/auth/register/', {
         username,
         password
       });
       if (response.status === 200) {
-        const loginResponse = await axios.post('http://127.0.0.1:8000/auth/login/', {
+        const loginResponse = await axios.post('http://127.0.0.1:8080/auth/login/', {
           username,
           password
         });

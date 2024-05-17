@@ -34,7 +34,7 @@ def upload_event_photo(event_id: int, image: UploadFile = File(...), db: Session
     with open(f"uploads/{image.filename}", "wb") as buffer:
         buffer.write(image.file.read())
 
-    event.image_url = f"http://127.0.0.1:8000/uploads/{image.filename}"
+    event.image_url = f"http://127.0.0.1:8080/uploads/{image.filename}"
     db.commit()
 
     return event
