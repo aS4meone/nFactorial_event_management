@@ -1,4 +1,5 @@
 import os
+from urllib.parse import urlencode
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
@@ -95,3 +96,25 @@ def get_registered_users(event_id: int, db: Session = Depends(get_db)):
     if not event:
         raise HTTPException(status_code=404, detail="Event not found")
     return event.users
+
+
+@router.get("/{event_id}/calendar_link")
+def generate_google_calendar_link(event_id: int, db: Session = Depends(get_db)):
+    event = db.query(Event).filter(Event.id == event_id).first()
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+
+    base_url = "https://www.google.com/calendar/render"
+
+    start_time = event.time.strftime('%Y%m%dT%H%M%SZ')
+
+    query_params = {
+        "action": "TEMPLATE",
+        "text": event.name,
+        "dates": f"{start_time}/{start_time}",
+        "details": event.description,
+        "location": event.location
+    }
+    link = f"{base_url}?{urlencode(query_params)}"
+
+    return {"calendar_link": link}
