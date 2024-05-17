@@ -1,0 +1,45 @@
+.event-item {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 50%;
+  margin: 0 auto 20px;
+}
+
+.event-details {
+  margin-bottom: 10px;
+}
+
+.date-location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  filter: invert(1); /* Инвертируем цвет */
+}
+
+.event-date-time {
+  font-size: 14px;
+  color: red;
+}
+
+.event-location {
+  font-size: 14px;
+}
+
+.event-name {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
