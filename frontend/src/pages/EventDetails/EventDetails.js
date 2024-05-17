@@ -4,6 +4,8 @@ import axios from 'axios';
 import './EventDetails.css';
 import LoginModal from "../../components/LoginModal/LoginModal";
 
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+
 function EventDetails() {
     const {id} = useParams();
     const [event, setEvent] = useState(null);
@@ -16,7 +18,7 @@ function EventDetails() {
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8080/events/${id}`);
+                const response = await axios.get(`${REACT_APP_API_URL}/events/${id}`);
                 setEvent(response.data);
             } catch (error) {
                 console.error('Error fetching event details:', error);
@@ -29,7 +31,7 @@ function EventDetails() {
     useEffect(() => {
         const fetchCalendarLink = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8080/events/${id}/calendar_link`);
+                const response = await axios.get(`${REACT_APP_API_URL}/events/${id}/calendar_link`);
                 setCalendarLink(response.data.calendar_link);
             } catch (error) {
                 console.error('Error fetching calendar link:', error);
@@ -44,7 +46,7 @@ function EventDetails() {
             setShowModal(true);
         } else {
             try {
-                const response = await axios.post(`http://127.0.0.1:8080/events/register/${id}/`, {}, {
+                const response = await axios.post(`${REACT_APP_API_URL}/events/register/${id}/`, {}, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                         'Accept': 'application/json'

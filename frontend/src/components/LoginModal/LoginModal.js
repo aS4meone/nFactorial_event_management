@@ -11,7 +11,7 @@ function LoginModal({ setShowModal }) {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8080/auth/login/', {
+      const response = await axios.post('/auth/login/', {
         username,
         password
       });
